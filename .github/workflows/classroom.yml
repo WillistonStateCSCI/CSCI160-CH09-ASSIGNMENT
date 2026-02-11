@@ -1,0 +1,244 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Q09_68 Test
+      id: q09_68-test
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Q09_68 Test
+        setup-command: javac Q09_68/NumberOfRows.java
+        command: java -cp Q09_68 NumberOfRows
+        input: ''
+        expected-output: |-
+          Number of rows in numbers: 2
+          Number of rows in temperatures: 7
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: Q09_69 Test
+      id: q09_69-test
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Q09_69 Test
+        setup-command: javac Q09_69/NumberOfElements.java
+        command: java -cp Q09_69 NumberOfElements
+        input: ''
+        expected-output: |-
+          Number of elements in numbers: 7
+          Number of elements in temperatures: 364
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: Q09_71 Test 1
+      id: q09_71-test-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Q09_71 Test 1
+        setup-command: javac Q09_71/NumberOfColumnsWithN.java
+        command: java -cp Q09_71 NumberOfColumnsWithN
+        input: '5'
+        expected-output: |-
+          Number of columns with 5 elements in grades1: 2
+          Number of columns with 5 elements in grades2: 0
+          Number of columns with 5 elements in grades3: 0
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: Q09_71 Test 2
+      id: q09_71-test-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Q09_71 Test 2
+        setup-command: javac Q09_71/NumberOfColumnsWithN.java
+        command: java -cp Q09_71 NumberOfColumnsWithN
+        input: '2'
+        expected-output: |-
+          Number of columns with 2 elements in grades1: 2
+          Number of columns with 2 elements in grades2: 5
+          Number of columns with 2 elements in grades3: 0
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: Q09_71 Test 3
+      id: q09_71-test-3
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Q09_71 Test 3
+        setup-command: javac Q09_71/NumberOfColumnsWithN.java
+        command: java -cp Q09_71 NumberOfColumnsWithN
+        input: '7'
+        expected-output: |-
+          Number of columns with 7 elements in grades1: 0
+          Number of columns with 7 elements in grades2: 0
+          Number of columns with 7 elements in grades3: 5
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: Q09_72 Test
+      id: q09_72-test
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Q09_72 Test
+        setup-command: javac Q09_72/SumOfElements.java
+        command: java -cp Q09_72 SumOfElements
+        input: ''
+        expected-output: |-
+          Sum of elements in numbers: 12.099999
+          Sum of elements in temperatures: 0.0
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: Q09_74 Test
+      id: q09_74-test
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Q09_74 Test
+        setup-command: javac Q09_74/SumLastOfEachRow.java
+        command: java -cp Q09_74 SumLastOfEachRow
+        input: ''
+        expected-output: |-
+          Sum of the elements in the last column of each row of numbers1: 9
+          Sum of the elements in the last column of each row of numbers2: 11
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: Q09_75 Test
+      id: q09_75-test
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Q09_75 Test
+        setup-command: javac Q09_75/InvertAll.java
+        command: java -cp Q09_75 InvertAll
+        input: ''
+        expected-output: |-
+          Before inverting values
+          true false false true
+          true true
+          false true
+          false false false false false
+          true false
+
+          After inverting values
+          false true true false
+          false false
+          true false
+          true true true true true
+          false true
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: Q09_77 Test
+      id: q09_77-test
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Q09_77 Test
+        setup-command: javac Q09_77/CountFalsePercentage.java
+        command: java -cp Q09_77 CountFalsePercentage
+        input: ''
+        expected-output: 'Percentage of false values in answers1: 60.00%'
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: Q09_78 Test
+      id: q09_78-test
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Q09_78 Test
+        setup-command: javac Q09_78/AverageAll.java
+        command: java -cp Q09_78 AverageAll
+        input: ''
+        expected-output: |-
+          Average of all the elements of numbers1: 2.7777777777777777
+          Average of all the elements of numbers2: 3.5
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: Q09_80 Test
+      id: q09_80-test
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Q09_80 Test
+        setup-command: javac Q09_80/ConcatenateAll.java
+        command: java -cp Q09_80 ConcatenateAll
+        input: ''
+        expected-output: |-
+          Concatenation of all the elements of words:
+          Programming is not a spectator sport!
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: Q09_81 Test
+      id: q09_81-test
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Q09_81 Test
+        setup-command: javac Q09_81/ConcatenatePerRow.java
+        command: java -cp Q09_81 ConcatenatePerRow
+        input: ''
+        expected-output: |-
+          Programming
+          is
+          not
+          a
+          spectator
+          sport!
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: Q09_83 Test
+      id: q09_83-test
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Q09_83 Test
+        setup-command: javac Q09_83/SumAll.java
+        command: java -cp Q09_83 SumAll
+        input: ''
+        expected-output: 'Sum of all elements of numbers: 17'
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: Q09_84 Test
+      id: q09_84-test
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Q09_84 Test
+        setup-command: javac Q09_84/OddOrEven.java
+        command: java -cp Q09_84 OddOrEven
+        input: ''
+        expected-output: |-
+          Parity of number of elements of words1: even
+          Parity of number of elements of words2: odd
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        Q09_68-TEST_RESULTS: "${{steps.q09_68-test.outputs.result}}"
+        Q09_69-TEST_RESULTS: "${{steps.q09_69-test.outputs.result}}"
+        Q09_71-TEST-1_RESULTS: "${{steps.q09_71-test-1.outputs.result}}"
+        Q09_71-TEST-2_RESULTS: "${{steps.q09_71-test-2.outputs.result}}"
+        Q09_71-TEST-3_RESULTS: "${{steps.q09_71-test-3.outputs.result}}"
+        Q09_72-TEST_RESULTS: "${{steps.q09_72-test.outputs.result}}"
+        Q09_74-TEST_RESULTS: "${{steps.q09_74-test.outputs.result}}"
+        Q09_75-TEST_RESULTS: "${{steps.q09_75-test.outputs.result}}"
+        Q09_77-TEST_RESULTS: "${{steps.q09_77-test.outputs.result}}"
+        Q09_78-TEST_RESULTS: "${{steps.q09_78-test.outputs.result}}"
+        Q09_80-TEST_RESULTS: "${{steps.q09_80-test.outputs.result}}"
+        Q09_81-TEST_RESULTS: "${{steps.q09_81-test.outputs.result}}"
+        Q09_83-TEST_RESULTS: "${{steps.q09_83-test.outputs.result}}"
+        Q09_84-TEST_RESULTS: "${{steps.q09_84-test.outputs.result}}"
+      with:
+        runners: q09_68-test,q09_69-test,q09_71-test-1,q09_71-test-2,q09_71-test-3,q09_72-test,q09_74-test,q09_75-test,q09_77-test,q09_78-test,q09_80-test,q09_81-test,q09_83-test,q09_84-test
